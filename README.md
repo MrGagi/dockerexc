@@ -5,3 +5,11 @@ Run command bellow on your chosen container. You can choose container with arrow
 ```
 docker exec -it container_id /bin/bash
 ```
+
+## Install
+
+You can install this by typing:
+
+```
+npm install -g dockerexc
+```
