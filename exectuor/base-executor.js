@@ -1,14 +1,10 @@
-let { getContainersFilePath } = require('./../utils');
-let fs = require('fs');
+let { getContainersFile } = require('./../utils');
 
 module.exports = class BaseExecutor {
-  getSavedContainers() {
-    return new Promise((resolve, reject) => {
-      const containerFile = getContainersFilePath();
-      fs.stat(containerFile, (err, stat) => {
-        if (err) reject(err);
-        resolve();
-      });
-    });
+  getContainers() {
+    return getContainersFile().get('containers') || [];
+  }
+  getStore() {
+    return getContainersFile();
   }
 }

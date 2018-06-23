@@ -1,13 +1,11 @@
-let path = require('path');
 let { spawnSync } = require('child_process');
 let { TYPES } = require('./../constants');
-
-function getContainersFilePath() {
-  return path.resolve(__dirname, '../containers.json');
-}
+const Store = require('data-store');
 
 function getContainersFile() {
-  return require(getContainersFilePath());
+  return new Store({
+    name: 'dockerexc-containers'
+  });
 }
 
 function executeOnDockerCompose(path, flags) {
@@ -25,7 +23,6 @@ function getType(arguments) {
   return TYPES.EXEC;
 }
 
-module.exports.getContainersFilePath = getContainersFilePath;
 module.exports.getContainersFile = getContainersFile;
 module.exports.executeOnDockerCompose = executeOnDockerCompose;
 module.exports.getType = getType;
